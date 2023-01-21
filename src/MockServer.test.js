@@ -25,10 +25,11 @@ afterAll(() => {
 
 describe("Mocking API", () => {
   it("[Fetch Success] データが正しくフェッチされてボタンがdisabledになる", async () => {
-    render(<MockServer />);
+    const { container } = render(<MockServer />);
     await userEvent.click(screen.getByRole("button"));
     expect(await screen.findByRole("heading")).toHaveTextContent("Bred dummy");
     expect(screen.getByRole("button")).toHaveAttribute("disabled");
+    expect(container).toMatchSnapshot();
   });
 
   it("[Fetch failure] エラーメッセージが表示されボタンが有効化される", async () => {
