@@ -9,7 +9,6 @@ import {
   selectCount,
 } from "./counterSlice";
 import styles from "./Counter.module.css";
-import { fetchDummy } from "../customCuounter/customCounterSlice";
 
 export function Counter() {
   const count = useSelector(selectCount);
@@ -53,7 +52,6 @@ export function Counter() {
         <button
           className={styles.asyncButton}
           onClick={() => dispatch(incrementAsync(incrementValue))}
-          // onClick={() => dispatch(fetchDummy(5))}
         >
           Add Async
         </button>

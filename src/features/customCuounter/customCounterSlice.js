@@ -4,7 +4,6 @@ import { fetchCount } from "../counter/counterAPI";
 
 export const fetchDummy = createAsyncThunk("fetch/dummy", async (num) => {
   const res = await fetchCount(num);
-  console.log(res, "res");
   return res.data;
 });
 
