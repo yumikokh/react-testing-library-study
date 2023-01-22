@@ -4,6 +4,7 @@ import { fetchCount } from "../counter/counterAPI";
 
 export const fetchDummy = createAsyncThunk("fetch/dummy", async (num) => {
   const res = await fetchCount(num);
+  console.log(res, "res");
   return res.data;
 });
 
@@ -54,20 +55,20 @@ export const customCounterSlice = createSlice({
           break;
       }
     },
-    extraReduces: (builder) => {
-      builder.addCase(fetchDummy.fulfilled, (state, action) => {
-        state.value = 100 + action.payload;
-      });
-      builder.addCase(fetchDummy.rejected, (state, action) => {
-        state.value = 100 - action.payload;
-      });
-      builder.addCase(fetchJSON.fulfilled, (state, action) => {
-        state.username = action.payload;
-      });
-      builder.addCase(fetchJSON.rejected, (state, action) => {
-        state.username = "anonymous";
-      });
-    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchDummy.fulfilled, (state, action) => {
+      state.value = 100 + action.payload;
+    });
+    builder.addCase(fetchDummy.rejected, (state, action) => {
+      state.value = 100 - action.payload;
+    });
+    builder.addCase(fetchJSON.fulfilled, (state, action) => {
+      state.username = action.payload;
+    });
+    builder.addCase(fetchJSON.rejected, (state, action) => {
+      state.username = "anonymous";
+    });
   },
 });
 
