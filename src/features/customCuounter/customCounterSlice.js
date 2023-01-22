@@ -1,10 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { fetchCount } from "../counter/counterAPI";
-const sleep = (msec) => {
-  const start = new Date();
-  while (new Date() - start < msec);
-};
+
 export const fetchDummy = createAsyncThunk("fetch/dummy", async (num) => {
   const res = await fetchCount(num);
   return res.data;
